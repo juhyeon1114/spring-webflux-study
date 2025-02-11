@@ -1,6 +1,7 @@
 package study.sse.controller;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,18 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.core.publisher.Sinks;
+import study.sse.service.NotificationService;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/notifications")
 public class NotificationController {
 
-    private static Sinks.Many<String> sink = Sinks.many().unicast().onBackpressureBuffer();
+    private final NotificationService notificationService;
     private static AtomicInteger lastEventId = new AtomicInteger(1);
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE) // sse를 사용하기 위한 헤더
     public Flux<ServerSentEvent> getNotifications() {
-        return sink.asFlux()
+        return notificationService.getMessageFromSink()
                 .map(message -> {
                     int lastEventId = NotificationController.lastEventId.getAndIncrement();
                     return ServerSentEvent.builder(message)
@@ -37,7 +39,7 @@ public class NotificationController {
     @PostMapping
     public Mono<String> addNotification(@RequestBody Event event) {
         String notificationMessage = event.type() + " : " + event.message();
-        sink.tryEmitNext(notificationMessage);
+        notificationService.tryEmitNext(notificationMessage);
         return Mono.just("ok");
     }
 
