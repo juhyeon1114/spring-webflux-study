@@ -1,4 +1,4 @@
-package study.webfluximage.entity.common.repository;
+package study.sse.entity.common.repository;
 
 import lombok.Data;
 

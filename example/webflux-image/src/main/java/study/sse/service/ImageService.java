@@ -1,9 +1,9 @@
-package study.webfluximage.service;
+package study.sse.service;
 
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import study.webfluximage.entity.common.Image;
-import study.webfluximage.repository.ImageReactorRepository;
+import study.sse.entity.common.Image;
+import study.sse.repository.ImageReactorRepository;
 
 @Service
 public class ImageService {

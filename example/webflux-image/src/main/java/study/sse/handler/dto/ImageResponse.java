@@ -1,4 +1,4 @@
-package study.webfluximage.handler.dto;
+package study.sse.handler.dto;
 
 public record ImageResponse(
         String id,

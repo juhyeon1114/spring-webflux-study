@@ -1,4 +1,5 @@
 rootProject.name = 'spring-webflux-study'
 
+include 'example:sse'
 include 'example:webflux'
 include 'example:webflux-image'

@@ -1,11 +1,11 @@
-package study.webfluximage.config;
+package study.sse.config;
 
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
-import study.webfluximage.handler.ImageHandler;
+import study.sse.handler.ImageHandler;
 
 @Configuration
 public class RouteConfig {

@@ -1,12 +1,12 @@
-package study.webfluximage.repository;
+package study.sse.repository;
 
 import java.util.Map;
 import java.util.Optional;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
-import study.webfluximage.entity.common.repository.ImageEntity;
-import study.webfluximage.entity.common.repository.UserEntity;
+import study.sse.entity.common.repository.ImageEntity;
+import study.sse.entity.common.repository.UserEntity;
 
 @Slf4j
 public class ImageReactorRepository {

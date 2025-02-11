@@ -1,13 +1,13 @@
-package study.webfluximage;
+package study.sse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ImageApplication {
+public class NotificationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ImageApplication.class, args);
+        SpringApplication.run(NotificationApplication.class, args);
     }
 
 }

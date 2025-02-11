@@ -1,9 +1,9 @@
-package study.webfluximage.entity.common.repository;
+package study.sse.entity.common;
 
 import lombok.Data;
 
 @Data
-public class ImageEntity {
+public class Image {
 
     private final String id;
     private final String name;
