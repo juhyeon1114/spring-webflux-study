@@ -8,6 +8,7 @@ import com.campusgram.article.entity.ArticleThumbnail;
 import com.campusgram.article.usecase.CreateArticleUsecase;
 import java.util.Arrays;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
@@ -15,9 +16,9 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.test.web.reactive.server.WebTestClient.BodyContentSpec;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @AutoConfigureWebTestClient
 @WebFluxTest(
         controllers = {ArticleController.class}
@@ -63,10 +64,13 @@ class ArticleControllerTest {
                 .exchange()
                 .expectBody()
                 .jsonPath("$.id").isEqualTo(id)
+                .jsonPath("$.title").isEqualTo(title)
+                .jsonPath("$.content").isEqualTo(content)
+                .jsonPath("$.creatorId").isEqualTo(creatorId)
                 .returnResult();
 
         // then
-        System.out.println(Arrays.toString(result.getResponseBody()));
+        log.info(Arrays.toString(result.getResponseBody()));
     }
 
 }
