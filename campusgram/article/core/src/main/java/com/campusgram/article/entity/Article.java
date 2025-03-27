@@ -15,4 +15,19 @@ public class Article {
 	private List<ArticleThumbnail> thumbnails;
 	private String creatorId;
 
+	public static Article create(
+		String title,
+		String content,
+		List<ArticleThumbnail> thumbnails,
+		String creatorId
+	) {
+		return new Article(
+			null,
+			title,
+			content,
+			thumbnails,
+			creatorId
+		);
+	}
+
 }
